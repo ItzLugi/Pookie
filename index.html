@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gia & Me | 6 Months</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --bg-deep: #0f172a;
+            --glass: rgba(15, 23, 42, 0.6);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #2e1065 0%, #0f172a 100%);
+            font-family: 'Inter', sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #photo-viewport {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-photo {
+            position: absolute;
+            border-radius: 10px;
+            border: 3px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            opacity: 0.6;
+            animation: driftUp linear infinite;
+            object-fit: cover;
+        }
+
+        @keyframes driftUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-30vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            pointer-events: none;
+        }
+
+        .focus-box {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            width: 85%;
+            max-width: 600px;
+            padding: 30px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            pointer-events: auto;
+            animation: boxEntry 1.5s ease;
+        }
+
+        @keyframes boxEntry { from { opacity: 0; transform: translateY(30px); } }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; color: var(--primary); margin: 0 0 5px 0; }
+        .subtitle { font-weight: 300; font-size: 0.9rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 2px; }
+
+        #ticker { font-weight: 900; font-size: 1.2rem; color: white; margin: 15px 0 25px 0; font-variant-numeric: tabular-nums; }
+        #ticker span { color: var(--primary); font-size: 0.8rem; font-weight: 300; }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            border: 2px solid var(--primary);
+        }
+
+        iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        .heart-link {
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .heart-icon { font-size: 2.5rem; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        
+        .click-hint { font-size: 0.7rem; color: var(--primary); margin-top: 5px; opacity: 0.7; }
+
+        /* --- MOBILE ADAPTATION --- */
+        @media (max-width: 480px) {
+            h1 { font-size: 2.8rem; }
+            .subtitle { font-size: 0.75rem; letter-spacing: 1px; }
+            #ticker { font-size: 1rem; }
+            #ticker span { font-size: 0.7rem; }
+            .floating-photo { border-width: 2px; }
+            .focus-box { padding: 20px 15px; width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="photo-viewport"></div>
+
+    <div class="container">
+        <div class="focus-box">
+            <h1>Gia & Me</h1>
+            <p class="subtitle">Our Story - The First 6 Months</p>
+
+            <div id="ticker">
+                00 <span>Days</span> : 00 <span>Hours</span> : 00 <span>Mins</span>
+            </div>
+
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ" allow="autoplay" allowfullscreen></iframe>
+            </div>
+
+            <a href="https://ibb.co/album/p0zM8P" target="_blank" class="heart-link">
+                <div class="heart-icon">❤️</div>
+            </a>
+            <p class="click-hint">Tap the heart for a surprise</p>
+        </div>
+    </div>
+
+    <script>
+        const yourPhotos = [
+            'https://i.ibb.co/1tSTcDVQ/Whats-App-Image-2026-03-15-at-23-21-18-1.jpg',
+            'https://i.ibb.co/d0XF49Gd/Whats-App-Image-2026-03-15-at-23-21-18-2.jpg',
+            'https://i.ibb.co/bMwFLSb0/Whats-App-Image-2026-03-15-at-23-21-18-3.jpg',
+            'https://i.ibb.co/QF44fBgK/Whats-App-Image-2026-03-15-at-23-21-18-4.jpg',
+            'https://i.ibb.co/FLZJzCpx/Whats-App-Image-2026-03-15-at-23-21-18-5.jpg',
+            'https://i.ibb.co/67xsLvnQ/Whats-App-Image-2026-03-15-at-23-21-18-6.jpg',
+            'https://i.ibb.co/wryNdWm6/Whats-App-Image-2026-03-15-at-23-21-18-7.jpg',
+            'https://i.ibb.co/mCTKhNzZ/Whats-App-Image-2026-03-15-at-23-21-18-8.jpg',
+            'https://i.ibb.co/qMyWsDGc/Whats-App-Image-2026-03-15-at-23-21-18-9.jpg',
+            'https://i.ibb.co/672FhYP5/Whats-App-Image-2026-03-15-at-23-21-18-10.jpg',
+            'https://i.ibb.co/rRdTLdR8/Whats-App-Image-2026-03-15-at-23-21-18-11.jpg',
+            'https://i.ibb.co/TX0cVVH/Whats-App-Image-2026-03-15-at-23-21-18-12.jpg',
+            'https://i.ibb.co/fPND0wc/Whats-App-Image-2026-03-15-at-23-21-18.jpg',
+            'https://i.ibb.co/5hwcX34N/Whats-App-Image-2026-03-15-at-23-21-19-1.jpg',
+            'https://i.ibb.co/qMnXSwwb/Whats-App-Image-2026-03-15-at-23-21-19-2.jpg',
+            'https://i.ibb.co/MD91RgRj/Whats-App-Image-2026-03-15-at-23-21-19-3.jpg',
+            'https://i.ibb.co/twr33zkm/Whats-App-Image-2026-03-15-at-23-21-19-4.jpg',
+            'https://i.ibb.co/q3p8k2Z1/Whats-App-Image-2026-03-15-at-23-21-19-5.jpg',
+            'https://i.ibb.co/GvY4MWNC/Whats-App-Image-2026-03-15-at-23-21-19-6.jpg',
+            'https://i.ibb.co/C4CcMW8/Whats-App-Image-2026-03-15-at-23-21-19.jpg',
+            'https://i.ibb.co/HLMF1TkN/Whats-App-Image-2026-03-15-at-23-21-20-1.jpg',
+            'https://i.ibb.co/VcV4v0xh/Whats-App-Image-2026-03-15-at-23-21-20-2.jpg',
+            'https://i.ibb.co/9HBZmkbw/Whats-App-Image-2026-03-15-at-23-21-20-3.jpg',
+            'https://i.ibb.co/GvszzmS1/Whats-App-Image-2026-03-15-at-23-21-20-4.jpg',
+            'https://i.ibb.co/Rmgj4Jg/Whats-App-Image-2026-03-15-at-23-21-20-5.jpg',
+            'https://i.ibb.co/SDJkkddK/Whats-App-Image-2026-03-15-at-23-21-20-6.jpg',
+            'https://i.ibb.co/3mKvVP47/Whats-App-Image-2026-03-15-at-23-21-20-7.jpg',
+            'https://i.ibb.co/xSn8B1St/Whats-App-Image-2026-03-15-at-23-21-20-8.jpg',
+            'https://i.ibb.co/1tB9bg0H/Whats-App-Image-2026-03-15-at-23-21-20-9.jpg',
+            'https://i.ibb.co/TxYHvVPW/Whats-App-Image-2026-03-15-at-23-21-20-10.jpg',
+            'https://i.ibb.co/VWNnQ2mJ/Whats-App-Image-2026-03-15-at-23-21-20-11.jpg',
+            'https://i.ibb.co/jvSzY9dG/Whats-App-Image-2026-03-15-at-23-21-20-12.jpg',
+            'https://i.ibb.co/0RnRwt5H/Whats-App-Image-2026-03-15-at-23-21-20-13.jpg',
+            'https://i.ibb.co/6RkbGSwx/Whats-App-Image-2026-03-15-at-23-21-20-14.jpg',
+            'https://i.ibb.co/x8XFP4RQ/Whats-App-Image-2026-03-15-at-23-21-20-15.jpg',
+            'https://i.ibb.co/5X6Ym56g/Whats-App-Image-2026-03-15-at-23-21-20-16.jpg',
+            'https://i.ibb.co/8n1tSC2F/Whats-App-Image-2026-03-15-at-23-21-20-17.jpg',
+            'https://i.ibb.co/F4Nf8h2J/Whats-App-Image-2026-03-15-at-23-21-20-18.jpg',
+            'https://i.ibb.co/FkcKHhHK/Whats-App-Image-2026-03-15-at-23-21-20-19.jpg',
+            'https://i.ibb.co/YFyzX8Cf/Whats-App-Image-2026-03-15-at-23-21-20-20.jpg',
+            'https://i.ibb.co/278QkMH0/Whats-App-Image-2026-03-15-at-23-21-20-21.jpg',
+            'https://i.ibb.co/wh4wJ3zw/Whats-App-Image-2026-03-15-at-23-21-20-22.jpg',
+            'https://i.ibb.co/BHk87m5L/Whats-App-Image-2026-03-15-at-23-21-20-23.jpg',
+            'https://i.ibb.co/xK4HnTCt/Whats-App-Image-2026-03-15-at-23-21-20-24.jpg',
+            'https://i.ibb.co/846tXj3k/Whats-App-Image-2026-03-15-at-23-21-20-25.jpg',
+            'https://i.ibb.co/v4sccMVM/Whats-App-Image-2026-03-15-at-23-21-20-26.jpg',
+            'https://i.ibb.co/23b8S29g/Whats-App-Image-2026-03-15-at-23-21-20-27.jpg',
+            'https://i.ibb.co/KctzPQh0/Whats-App-Image-2026-03-15-at-23-21-20-28.jpg',
+            'https://i.ibb.co/wZmSyZPr/Whats-App-Image-2026-03-15-at-23-21-20-29.jpg',
+            'https://i.ibb.co/QjN3ZHJ6/Whats-App-Image-2026-03-15-at-23-21-20-30.jpg',
+            'https://i.ibb.co/XrFfL3QB/Whats-App-Image-2026-03-15-at-23-21-20-31.jpg',
+            'https://i.ibb.co/VpJ91Wct/Whats-App-Image-2026-03-15-at-23-21-20-32.jpg',
+            'https://i.ibb.co/WvVctWGJ/Whats-App-Image-2026-03-15-at-23-21-20-33.jpg',
+            'https://i.ibb.co/YTTMTRVd/Whats-App-Image-2026-03-15-at-23-21-20-34.jpg',
+            'https://i.ibb.co/hJXjpmcz/Whats-App-Image-2026-03-15-at-23-21-20-35.jpg',
+            'https://i.ibb.co/V6JPzgT/Whats-App-Image-2026-03-15-at-23-21-20-36.jpg',
+            'https://i.ibb.co/tPB8rPhn/Whats-App-Image-2026-03-15-at-23-21-20-37.jpg',
+            'https://i.ibb.co/S48kdNJq/Whats-App-Image-2026-03-15-at-23-21-20-38.jpg',
+            'https://i.ibb.co/mF476X89/Whats-App-Image-2026-03-15-at-23-21-20.jpg',
+            'https://i.ibb.co/Q7jmhdPN/Whats-App-Image-2026-03-15-at-23-21-56.jpg',
+            'https://i.ibb.co/bg2Pb8nZ/Whats-App-Image-2026-03-15-at-23-21-57-1.jpg',
+            'https://i.ibb.co/S8Xy0YY/Whats-App-Image-2026-03-15-at-23-21-57-2.jpg',
+            'https://i.ibb.co/ZRNnSPcy/Whats-App-Image-2026-03-15-at-23-21-57-3.jpg',
+            'https://i.ibb.co/rG4FhMBm/Whats-App-Image-2026-03-15-at-23-21-57-4.jpg',
+            'https://i.ibb.co/TBLBZg1k/Whats-App-Image-2026-03-15-at-23-21-57-5.jpg',
+            'https://i.ibb.co/gLVcjMRq/Whats-App-Image-2026-03-15-at-23-21-57-6.jpg',
+            'https://i.ibb.co/HDC2H3WT/Whats-App-Image-2026-03-15-at-23-21-57-7.jpg',
+            'https://i.ibb.co/q3F1BRc0/Whats-App-Image-2026-03-15-at-23-21-57-8.jpg',
+            'https://i.ibb.co/XcCc3yw/Whats-App-Image-2026-03-15-at-23-21-57-9.jpg',
+            'https://i.ibb.co/4wGbkgTZ/Whats-App-Image-2026-03-15-at-23-21-57-10.jpg',
+            'https://i.ibb.co/Psp8fM9g/Whats-App-Image-2026-03-15-at-23-21-57-11.jpg',
+            'https://i.ibb.co/84Tkwj0H/Whats-App-Image-2026-03-15-at-23-21-57-12.jpg',
+            'https://i.ibb.co/xKnJG5PL/Whats-App-Image-2026-03-15-at-23-21-57-13.jpg',
+            'https://i.ibb.co/sdjwsdCj/Whats-App-Image-2026-03-15-at-23-21-57-14.jpg',
+            'https://i.ibb.co/fYCFZKzY/Whats-App-Image-2026-03-15-at-23-21-57-15.jpg',
+            'https://i.ibb.co/MxPkM1kf/Whats-App-Image-2026-03-15-at-23-21-57-16.jpg',
+            'https://i.ibb.co/39dKx3LN/Whats-App-Image-2026-03-15-at-23-21-57-17.jpg',
+            'https://i.ibb.co/R43rjqcp/Whats-App-Image-2026-03-15-at-23-21-57-18.jpg',
+            'https://i.ibb.co/ksq88WBw/Whats-App-Image-2026-03-15-at-23-21-57.jpg',
+            'https://i.ibb.co/ZpSzjW23/Whats-App-Image-2026-03-15-at-23-21-58-1.jpg',
+            'https://i.ibb.co/Z6Cw0kCZ/Whats-App-Image-2026-03-15-at-23-21-58-2.jpg',
+            'https://i.ibb.co/xKXGsfmG/Whats-App-Image-2026-03-15-at-23-21-58-3.jpg',
+            'https://i.ibb.co/DHNn0DRj/Whats-App-Image-2026-03-15-at-23-21-58-4.jpg',
+            'https://i.ibb.co/jPzq37mM/Whats-App-Image-2026-03-15-at-23-21-58-5.jpg',
+            'https://i.ibb.co/vg4ck0X/Whats-App-Image-2026-03-15-at-23-21-58-6.jpg',
+            'https://i.ibb.co/Nvb3V3B/Whats-App-Image-2026-03-15-at-23-21-58-7.jpg',
+            'https://i.ibb.co/hj0V9TR/Whats-App-Image-2026-03-15-at-23-21-58-8.jpg',
+            'https://i.ibb.co/SXCG0QzB/Whats-App-Image-2026-03-15-at-23-21-58-9.jpg',
+            'https://i.ibb.co/XfyPg0VJ/Whats-App-Image-2026-03-15-at-23-21-58-10.jpg',
+            'https://i.ibb.co/GygV0bn/Whats-App-Image-2026-03-15-at-23-21-58-11.jpg',
+            'https://i.ibb.co/bj3H9zbD/Whats-App-Image-2026-03-15-at-23-21-58-12.jpg',
+            'https://i.ibb.co/k6yd2dDY/Whats-App-Image-2026-03-15-at-23-21-58-13.jpg',
+            'https://i.ibb.co/cccwLWXT/Whats-App-Image-2026-03-15-at-23-21-58-14.jpg',
+            'https://i.ibb.co/DPkGgxt1/Whats-App-Image-2026-03-15-at-23-21-58-15.jpg',
+            'https://i.ibb.co/wFJkvhb1/Whats-App-Image-2026-03-15-at-23-21-58-16.jpg',
+            'https://i.ibb.co/rfxY8bzm/Whats-App-Image-2026-03-15-at-23-21-58-17.jpg',
+            'https://i.ibb.co/21wZDDyN/Whats-App-Image-2026-03-15-at-23-21-58.jpg'
+        ];
+
+        const startDate = new Date(2025, 8, 17, 0, 0); 
+        const viewport = document.getElementById('photo-viewport');
+        const ticker = document.getElementById('ticker');
+
+        function spawnPhoto() {
+            if (yourPhotos.length === 0) return;
+            const photo = document.createElement('img');
+            photo.src = yourPhotos[Math.floor(Math.random() * yourPhotos.length)];
+            photo.classList.add('floating-photo');
+
+            // Smaller photos for mobile
+            const isMobile = window.innerWidth <= 480;
+            const width = isMobile ? (Math.random() * 80 + 60) : (Math.random() * 150 + 100);
+            
+            photo.style.width = width + 'px';
+            photo.style.left = (Math.random() * 110 - 5) + 'vw';
+
+            const depth = Math.random();
+            const duration = (depth * 20 + 20) + 's';
+            photo.style.animationDuration = duration;
+            photo.style.zIndex = Math.floor(depth * 5); 
+            photo.style.opacity = (depth * 0.4 + 0.2);
+
+            viewport.appendChild(photo);
+            setTimeout(() => photo.remove(), parseFloat(duration) * 1000);
+        }
+
+        function updateTicker() {
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / 1000 / 60) % 60);
+            const pad = (n) => n.toString().padStart(2, '0');
+            ticker.innerHTML = `${pad(days)} <span>Days</span> : ${pad(hours)} <span>Hrs</span> : ${pad(mins)} <span>Mins</span>`;
+        }
+
+        updateTicker();
+        setInterval(updateTicker, 1000);
+        setInterval(spawnPhoto, 1500);
+        for(let i=0; i<6; i++) { setTimeout(spawnPhoto, i * 400); }
+    </script>
+</body>
+</html>
